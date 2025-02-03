@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos Carmo</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
+</head>
+<body>
+    <header>
+        <div class="nav container">
+            <a href="#" class="logo">Pedidos Carmo</a>
+            <div class="cart-icon-container">
+                <i class='bx bx-cart' id="cart-icon"></i>
+                <span id="cart-count" class="cart-count">0</span> <!-- Contador de produtos -->
+            </div>
+            <div class="cart">
+                <h2 class="cart-title">Seu Pedido</h2>
+                <div class="cart-content"></div>
+                <button type="button" class="btn-buy">Finalizar Pedido</button>
+                <i class='bx bx-x' id="close-cart">x</i>
+            </div>
+        </div>
+    </header>
+    <section class="home container" id="home">
+        <div class="home-text">
+            <h1>
+                BEM VINDO Á PEDIDOS CARMO <br />                  
+            </h1>
+            <h2>Ferramenta não oficial, suporte á Auxiliar Serviços</h2>
+            <a href="#menu" class="btn"> 
+              <span>Faça seu Pedido</span>
+              <i class='bx bx-up-arrow-alt' ></i>
+            </a>
+        </div>
+        <img src="imagens/logo auxiliar.png" alt="" class="home-img">
+    </section>
+    <section class="shop container" id="menu"> 
+        <h2 class="section-title">Menu dos Itens</h2>
+        <div class="shop-content">
+            <!--Produto 1-->
+            <div class="product-box">
+                <img src="imagens/Roupas/apito.png" alt="" class="product-img">
+                <h2 class="product-title">APITO</h2>
+                <i class='bx bx-cart add-cart'></i>
+            </div>
+            <!--Produto 2-->
+            <div class="product-box">
+                <img src="imagens/Roupas/cinto.png" alt="" class="product-img">
+                <h2 class="product-title">CINTO</h2>
+                <i class='bx bx-cart add-cart'></i>
+            </div>
+            <!--Produto 3-->
+            <div class="product-box">
+                <img src="imagens/Roupas/coldre.png" alt="" class="product-img">
+                <h2 class="product-title">COLDRE</h2>
+                <i class='bx bx-cart add-cart'></i>
+            </div>
+            <!--Produto 4-->
+            <div class="product-box">
+                <img src="imagens/Roupas/cordao fiel.png" alt="" class="product-img">
+                <h2 class="product-title">CORDÃO FIEL</h2>
+                <i class='bx bx-cart add-cart'></i>
+            </div>
+            <!--Produto 5-->
+            <div class="product-box">
+                <img src="imagens/Roupas/colete refletivo.png" alt="" class="product-img">
+                <h2 class="product-title">COLETE REFLETIVO</h2>
+                <i class='bx bx-cart add-cart'></i>
+            </div>
+            <!--Produto 6-->
+            <div class="product-box">
+                <img src="imagens/Roupas/colete.png" alt="" class="product-img">
+                <h2 class="product-title">CAPA COLETE BALISTICO</h2>
+                <i class='bx bx-cart add-cart'></i>
+            </div>
+            <!--Produto 7-->
+            <div class="product-box">
+                <img src="imagens/Roupas/chapeu.png" alt="" class="product-img">
+                <h2 class="product-title">CHAPEU</h2>
+                <i class='bx bx-cart add-cart'></i>
+            </div>
+            <!--Produto 8-->
+            <div class="product-box">
+                <img src="imagens/Roupas/cortuno.png" alt="" class="product-img">
+                <h2 class="product-title">CORTUNO</h2>
+                <i class='bx bx-cart add-cart'></i>
+            </div>
+             <!--Produto 9-->
+             <div class="product-box">
+                <img src="imagens/Roupas/camisa azul longa.png" alt="" class="product-img">
+                <h2 class="product-title">CAMISA AZUL LONGA</h2>
+                <i class='bx bx-cart add-cart'></i>
+            </div>
+             <!--Produto 10-->
+             <div class="product-box">
+                <img src="imagens/Roupas/azul curta.png" alt="" class="product-img">
+                <h2 class="product-title">CAMISA AZUL CURTA</h2>
+                <i class='bx bx-cart add-cart'></i>
+            </div>
+             <!--Produto 11-->
+             <div class="product-box">
+                <img src="imagens/Roupas/camisa branca longa.jpg" alt="" class="product-img">
+                <h2 class="product-title">CAMISA BRANCA LONGA</h2>
+                <i class='bx bx-cart add-cart'></i>
+            </div>
+             <!--Produto 12-->
+             <div class="product-box">
+                <img src="imagens/Roupas/camisa branca curta.png" alt="" class="product-img">
+                <h2 class="product-title">CAMISA BRANCA CURTA</h2>
+                <i class='bx bx-cart add-cart'></i>
+            </div>
+            <!--Produto 13-->
+            <div class="product-box">
+                <img src="imagens/Roupas/calça.png" alt="" class="product-img">
+                <h2 class="product-title">CALÇA</h2>
+                <i class='bx bx-cart add-cart'></i>
+            </div>
+        </div>
+    </section>
+    <!-- Modal de Finalização de Pedido -->
+    <div id="finalization-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-finalization-modal">&times;</span>
+            <h2>Finalização do Pedido</h2>
+            <label for="customer-name">Nome:</label>
+            <input type="text" id="customer-name" required>
+            <label for="customer-phone">Telefone:</label>
+            <input type="tel" id="customer-phone" required>
+            <label>Opção de Entrega:</label>
+            <select id="delivery-option">
+                <option value="retirar">Retirar</option>
+                <option value="entregar">Entregar</option>
+            </select>
+            <div id="address-container" style="display: none;">
+                <label for="address">Endereço da Filial:</label>
+                <input type="text" id="address">
+            </div>
+            <button id="confirm-order">Confirmar Pedido</button>
+            <p id="error-message" style="color: red; display: none;">Por favor, preencha todos os campos!</p>
+        </div>
+    </div>
+
+    <div id="size-quantity-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span> <!-- Fechar modal -->
+            <h2 id="modal-product-title">Escolha o Tamanho e Quantidade</h2>
+            <img id="modal-product-img" src="" alt="Imagem do Produto" class="modal-product-img">
+            <label for="size">Tamanho:</label>
+            <select id="size">
+                <option value="P">P</option>
+                <option value="M">M</option>
+                <option value="G">G</option>
+            </select>
+            <br>
+            <label for="quantity">Quantidade:</label>
+            <input type="number" id="quantity" value="1" min="1">
+            <br>
+            <button id="confirm-add">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

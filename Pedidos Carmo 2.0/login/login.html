@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auxiliar Serviços</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        :root {
+            --azul: rgb(19, 19, 131);
+            --main-color: #fd4646;
+            --text-color: #171427;
+            --bg-color: #fff;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --poppins-font: "Poppins", sans-serif;
+        }
+
+        * {
+            font-family: var(--poppins-font);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-color);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 400px;
+            max-width: 90%;
+        }
+
+        .card h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--azul);
+        }
+
+        .card input {
+            width: 100%;
+            padding: 12px;
+            margin: 12px 0;
+            border: 1px solid var(--text-color);
+            border-radius: 10px;
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .card input::placeholder {
+            color: #999;
+        }
+
+        .card button {
+            background-color: var(--main-color);
+            color: var(--bg-color);
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .card button:hover {
+            background-color: var(--azul);
+        }
+
+        .footer {
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--main-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--azul);
+            text-decoration: underline;
+        }
+
+        .info {
+            color: var(--bg-color);
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .info div {
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 20px;
+            }
+
+            .card h2 {
+                font-size: 1.8rem;
+            }
+
+            .card button {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .info {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card" id="login">
+            <h2>LOGIN</h2>
+            <form>
+                <input type="email" placeholder="E-mail:" required>
+                <input type="password" placeholder="Senha:" required>
+                <button type="submit">LOGIN</button>
+            </form>
+            <div class="footer">
+                Ainda não tem uma conta? <a href="#" onclick="showRegister()">Registre-se</a>
+            </div>
+        </div>
+
+        <div class="card" id="register" style="display: none;">
+            <h2>CADASTRO</h2>
+            <form>
+                <input type="text" placeholder="Nome:" required>
+                <input type="email" placeholder="E-mail:" required>
+                <input type="password" placeholder="Senha:" required>
+                <button type="submit">CADASTRAR</button>
+            </form>
+            <div class="footer">
+                Já tem uma conta? <a href="#" onclick="showLogin()">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="info">
+        <div>Telefone: +49 9 9218-6069</div>
+        <div>E-mail: contato@host.link</div>
+        <div>Website: pedidoscar.com.br</div>
+        <div>Endereço: Rua Ermelino de Leão, 451 - Centro, CEP 80410-230</div>
+    </div>
+
+    <script>
+        function showRegister() {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('register').style.display = 'block';
+        }
+
+        function showLogin() {
+            document.getElementById('register').style.display = 'none';
+            document.getElementById('login').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
