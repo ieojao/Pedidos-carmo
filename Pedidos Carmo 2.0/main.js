@@ -238,20 +238,28 @@ function removeCartItem(event) {
     updateCartCount(); // Atualiza o contador após remover o item
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const images = document.querySelectorAll(".carousel-item");
-    let currentIndex = 0;
+// Função de login/logout
+let isLoggedIn = true; // Mude para false para simular não logado
 
-    document.getElementById("next").addEventListener("click", () => {
-        images[currentIndex].classList.remove("active");
-        currentIndex = (currentIndex + 1) % images.length;
-        images[currentIndex].classList.add("active");
-    });
+if (isLoggedIn) {
+    document.getElementById('user-status').innerText = "Você está logado.";
+    document.getElementById('logout-button').onclick = function() {
+        // Lógica de logout aqui
+        alert("Você foi desconectado.");
+        document.getElementById('dropdown-content').style.display = 'none'; // Esconde o dropdown
+    };
+} else {
+    document.getElementById('user-status').innerText = "Você não está logado.";
+    document.getElementById('login-button').onclick = function() {
+        window.location.href = 'pagina-de-login.html'; // Redireciona para a página de login
+    };
+}
 
-    document.getElementById("prev").addEventListener("click", () => {
-        images[currentIndex].classList.remove("active");
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        images[currentIndex].classList.add("active");
-    });
+// Controle do menu dropdown
+document.querySelector('.menu-container').addEventListener('mouseenter', function() {
+    document.getElementById('dropdown-content').style.display = 'block';
 });
 
+document.querySelector('.menu-container').addEventListener('mouseleave', function() {
+    document.getElementById('dropdown-content').style.display = 'none';
+});

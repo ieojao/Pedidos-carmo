@@ -15,6 +15,14 @@
                 <i class='bx bx-cart' id="cart-icon"></i>
                 <span id="cart-count" class="cart-count">0</span> <!-- Contador de produtos -->
             </div>
+            <div class="menu-container">
+                <button id="menu-button" class="menu-button">Menu</button> <!-- Botão do Menu -->
+                <div class="dropdown-content" id="dropdown-content">
+                    <p id="user-status">Você está logado como <strong>Usuário</strong>.</p>
+                    <button id="logout-button" class="btn">Logout</button>
+                    <button id="login-button" class="btn">Login</button>
+                </div>
+            </div>
             <div class="cart">
                 <h2 class="cart-title">Seu Pedido</h2>
                 <div class="cart-content"></div>
@@ -22,7 +30,19 @@
                 <i class='bx bx-x' id="close-cart">x</i>
             </div>
         </div>
-    </header>
+    </header>    
+    
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <h2>Bem-vindo!</h2>
+            <p id="user-status">Você está logado como <strong>Usuário</strong>.</p>
+            <button id="logout-button" class="btn">Logout</button>
+            <button id="login-button" class="btn">Login</button>
+        </div>
+    </div>
+    
     <section class="home container" id="home">
         <div class="home-text">
             <h1>

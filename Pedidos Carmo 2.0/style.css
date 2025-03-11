@@ -137,8 +137,7 @@ header {
 
 .btn-buy:hover {
     background: var(--azul);
-    color: #fff
-    
+    color: #fff;
 }
 
 #close-cart {
@@ -155,6 +154,7 @@ header {
     cursor: pointer;
     margin-right: 10px;
 }
+
 .cart-icon-container {
     position: relative;
     display: inline-block;
@@ -311,25 +311,29 @@ header {
 #confirm-add:hover {
     background: var(--text-color); /* Cor ao passar o mouse */
 }
-.home{
+
+.home {
     margin-top: 50px;
     min-height: 650px;
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
 }
-.home-text h1{
-    font-family:var(--poppins-font);
+
+.home-text h1 {
+    font-family: var(--poppins-font);
     font-size: 3.5rem;
     font-weight: 800;
     color: var(--text-color);
 }
-.home-text p{
-   max-width: 300px;
-   font-size: 0.94rem;
-   font-family:var(--poppins-font);
-   margin: 1rem 0 1.5rem;
+
+.home-text p {
+    max-width: 300px;
+    font-size: 0.94rem;
+    font-family: var(--poppins-font);
+    margin: 1rem 0 1.5rem;
 }
+
 .btn {
     max-width: 160px;
     padding: 10px;
@@ -346,12 +350,14 @@ header {
     background: var(--main-color); /* Mudança de cor ao passar o mouse */
     transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
 }
-.btn span{
+
+.btn span {
     font-family: var(--poppins-font);
     color: var(--bg-color);
     text-transform: uppercase;
 }
-.btn .bx{
+
+.btn .bx {
     font-size: 20px;
     background: var(--azul);
     color: var(--bg-color);
@@ -359,11 +365,12 @@ header {
     border-radius: 50%;
     transform: rotate(60deg);
 }
-.home-img{
+
+.home-img {
     max-width: 350px;
     width: 100%;
-
 }
+
 /* Adaptação de navegação */
 @media (max-width: 1080px) {
     .nav {
@@ -379,22 +386,23 @@ header {
     .shop {
         margin-top: 2rem !important;
     }
-    .home-text h1{
+    .home-text h1 {
         font-size: 3rem;
     }
 }
-@media (max-width:770px){
-    .home{
+
+@media (max-width: 770px) {
+    .home {
         min-height: 500px;
         grid-template-columns: 1fr;
         margin-top: 4.5rem !important;
-
     }
-    .home-text h1{
+    .home-text h1 {
         order: 1;
         font-size: 2.5rem;
     }
 }
+
 @media (max-width: 400px) {
     .nav {
         padding: 11px;
@@ -457,6 +465,7 @@ header {
         font-size: 20px; /* Tamanho do ícone de remoção */
     }
 }
+
 .modal {
     display: none; 
     position: fixed; 
@@ -513,7 +522,6 @@ header {
     background: var(--text-color); 
 }
 
-
 .carousel {
     position: relative;
     width: 800px; /* Largura fixa */
@@ -562,4 +570,90 @@ header {
 
 #next {
     right: 10px;
+}
+
+/* Estilo do menu dropdown */
+.menu-container {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none; /* Inicialmente escondido */
+    position: absolute;
+    background-color: var(--bg-color);
+    min-width: 240px; /* Largura mínima */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    z-index: 1;
+    border-radius: 12px; /* Bordas arredondadas */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transição suave */
+    opacity: 0; /* Inicialmente invisível */
+    transform: translateY(-10px); /* Leve deslocamento para cima */
+}
+
+.menu-container:hover .dropdown-content {
+    display: block; /* Mostra o dropdown ao passar o mouse */
+    opacity: 1; /* Torna visível */
+    transform: translateY(0); /* Retorna para a posição original */
+}
+
+.dropdown-content p {
+    padding: 12px 20px;
+    color: var(--text-color);
+    margin: 0; /* Remove margens */
+    font-weight: 500; /* Peso da fonte */
+    transition: background 0.3s, color 0.3s; /* Transição ao passar o mouse */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Linha de separação entre itens */
+}
+
+.dropdown-content p:last-child {
+    border-bottom: none; /* Remove a linha do último item */
+}
+
+.dropdown-content p:hover {
+    background: var(--main-color); /* Fundo ao passar o mouse */
+    color: var(--bg-color); /* Cor do texto ao passar o mouse */
+    border-radius: 12px; /* Bordas arredondadas ao passar o mouse */
+}
+
+.dropdown-content button {
+    width: 100%;
+    padding: 12px;
+    background: var(--azul);
+    color: var(--bg-color);
+    border: none;
+    cursor: pointer;
+    border-radius: 8px; /* Bordas arredondadas */
+    font-weight: 600; /* Peso da fonte */
+    transition: background 0.3s, transform 0.2s; /* Transições suaves */
+    margin: 8px 0; /* Margem entre botões */
+    font-size: 1rem; /* Tamanho da fonte */
+    letter-spacing: 1px; /* Espaçamento entre letras */
+}
+
+.dropdown-content button:hover {
+    background: var(--main-color); /* Cor ao passar o mouse */
+    transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
+}
+
+/* Estilo do botão do menu */
+.menu-button {
+    background: var(--text-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 50px; /* Bordas arredondadas */
+    padding: 10px 20px; /* Padding interno */
+    font-size: 1rem; /* Tamanho da fonte */
+    font-weight: bold; /* Peso da fonte */
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s; /* Transições suaves */
+}
+
+.menu-button:hover {
+    background: var(--main-color); /* Cor ao passar o mouse */
+    transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
+}
+
+.menu-button:focus {
+    outline: none; /* Remove o contorno padrão */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Adiciona sombra ao focar */
 }
