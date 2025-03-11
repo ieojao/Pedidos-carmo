@@ -42,21 +42,21 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background: var(--bg-color);
+    background: var(--text-color);
     box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
     z-index: 100;
 }
-
 .nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px 0;
+    color: #fff;
 }
 
 .logo {
     font-size: 1.1rem;
-    color: var(--text-color);
+    color: var(--bg-color);
     margin-left: 10px;
 }
 
@@ -68,7 +68,7 @@ header {
     width: 360px;
     min-height: 100vh;
     padding: 20px;
-    background: var(--bg-color);
+    background: var(--text-color);
     box-shadow: -2px 0 4px hsl(0 4% 15% / 10%);
     transition: 0.3s;
 }
@@ -128,15 +128,17 @@ header {
     margin: 1.5rem auto 0 auto;
     padding: 12px 20px;
     border: none;
-    background: var(--azul);
-    color: var(--bg-color);
+    background: var(--bg-color);
+    color: var(--text-color);
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
 }
 
 .btn-buy:hover {
-    background: var(--text-color);
+    background: var(--azul);
+    color: #fff
+    
 }
 
 #close-cart {
@@ -152,6 +154,28 @@ header {
     font-size: 1.8rem;
     cursor: pointer;
     margin-right: 10px;
+}
+.cart-icon-container {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    border-radius: 50%; /* Forma circular */
+    padding: 5px 8px; /* Espaçamento interno */
+    font-size: 14px; /* Tamanho da fonte */
+    font-weight: bold; /* Negrito */
+    display: none; /* Inicialmente escondido */
+}
+
+/* Mostra o contador quando há itens no carrinho */
+.cart-count.visible {
+    display: inline-block; /* Mostra o contador */
 }
 
 .section-title {
@@ -487,4 +511,55 @@ header {
 
 #confirm-order:hover {
     background: var(--text-color); 
+}
+
+
+.carousel {
+    position: relative;
+    width: 800px; /* Largura fixa */
+    height: 500px; /* Altura fixa */
+    margin: auto; /* Centraliza o carrossel */
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-images {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s ease-in-out; /* Animação ao mudar de imagem */
+}
+
+.carousel-item {
+    min-width: 100%; /* Garante que cada item ocupe 100% da largura do carrossel */
+    height: 100%; /* Garante que cada item ocupe 100% da altura do carrossel */
+    display: none; /* Esconde todos os itens inicialmente */
+    opacity: 0; /* Inicialmente invisível */
+    transition: opacity 0.5s ease-in-out; /* Animação de transição */
+}
+
+.carousel-item.active {
+    display: block; /* Mostra o item ativo */
+    opacity: 1; /* Torna o item ativo visível */
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 10;
+}
+
+#prev {
+    left: 10px;
+}
+
+#next {
+    right: 10px;
 }

@@ -1,21 +1,22 @@
 // Carrinho
 let cartIcon = document.querySelector('#cart-icon');
+let cartCount = document.querySelector('#cart-count'); // Contador de produtos
 let cart = document.querySelector('.cart');
 let closeCart = document.querySelector('#close-cart');
 
 // Modal
 let modal = document.getElementById("size-quantity-modal");
-let closeModal = document.querySelector(".close");
+let closeModal = document.getElementById("close-modal"); // Fechar modal
 let addCartButtons = document.getElementsByClassName("add-cart");
 let confirmAddButton = document.getElementById("confirm-add");
 let selectedSize = document.getElementById("size");
 let selectedQuantity = document.getElementById("quantity");
 let currentProductTitle = "";
-let currentProductImg = ""; // Variável para armazenar a imagem do produto
+let currentProductImg = ""; 
 
-// Abre o carrinho
+// Abre/fecha o carrinho ao clicar no ícone
 cartIcon.onclick = () => {
-    cart.classList.add('active');
+    cart.classList.toggle('active');
 };
 
 // Fecha o carrinho
@@ -28,13 +29,27 @@ for (let button of addCartButtons) {
     button.addEventListener("click", function(event) {
         let productBox = button.parentElement;
         currentProductTitle = productBox.getElementsByClassName("product-title")[0].innerText;
-        currentProductImg = productBox.getElementsByClassName("product-img")[0].src; // Armazena a imagem
+        currentProductImg = productBox.getElementsByClassName("product-img")[0].src; 
 
+        // Obtém os tamanhos disponíveis
+        let sizes = JSON.parse(productBox.getAttribute('data-sizes'));
+        
         // Atualiza o conteúdo do modal
         document.getElementById("modal-product-title").innerText = currentProductTitle;
         document.getElementById("modal-product-img").src = currentProductImg;
 
-        modal.style.display = "block"; // Abre o modal
+        // Limpa as opções anteriores
+        selectedSize.innerHTML = '';
+
+        // Adiciona os tamanhos ao select
+        sizes.forEach(size => {
+            let option = document.createElement('option');
+            option.value = size;
+            option.textContent = size;
+            selectedSize.appendChild(option);
+        });
+
+        modal.style.display = "block"; 
     });
 }
 
@@ -54,48 +69,25 @@ window.onclick = function(event) {
 confirmAddButton.onclick = function() {
     let size = selectedSize.value;
     let quantity = selectedQuantity.value;
-    addProductToCart(currentProductTitle, currentProductImg, size, quantity); // Passa a imagem
-    modal.style.display = "none"; // Fecha o modal após adicionar
+    addProductToCart(currentProductTitle, currentProductImg, size, quantity); 
+    modal.style.display = "none"; 
 };
 
-// Remover itens
-if (document.readyState == "loading") {
-    document.addEventListener("DOMContentLoaded", ready);   
-} else {
-    ready();
-}
+// Atualiza o contador de produtos no carrinho
+function updateCartCount() {
+    let cartItems = document.getElementsByClassName('cart-box');
+    cartCount.innerText = cartItems.length;
 
-function ready() {
-    var removeCartButtons = document.getElementsByClassName('cart-remove');
-    for (var i = 0; i < removeCartButtons.length; i++) {
-        var button = removeCartButtons[i];
-        button.addEventListener('click', removeCartItem);
-    }
-
-    // Mudança Quantidade
-    var quantityInputs = document.getElementsByClassName('cart-quantity');
-    for (var i = 0; i < quantityInputs.length; i++) {
-        var input = quantityInputs[i];
-        input.addEventListener('change', quantityChanged);
-    }
-}
-
-function removeCartItem(event) {
-    var buttonClicked = event.target;
-    // Remove o elemento pai que contém o item do carrinho
-    buttonClicked.closest('.cart-box').remove(); // Usando closest para garantir que removemos o elemento correto
-}
-
-// Mudança Quantidade
-function quantityChanged(event) {
-    var input = event.target;
-    if (isNaN(input.value) || input.value <= 0) {
-        input.value = 1;
+    // Mostra ou esconde o contador
+    if (cartItems.length > 0) {
+        cartCount.classList.add('visible'); // Adiciona a classe para mostrar
+    } else {
+        cartCount.classList.remove('visible'); // Remove a classe para esconder
     }
 }
 
 // Adicionar ao carrinho
-function addProductToCart(title, img, size, quantity) { // Recebe a imagem como parâmetro
+function addProductToCart(title, img, size, quantity) { 
     var cartShopBox = document.createElement('div');
     cartShopBox.classList.add('cart-box');
 
@@ -114,15 +106,32 @@ function addProductToCart(title, img, size, quantity) { // Recebe a imagem como 
         <div class="detail-box">
             <div class="cart-product-title">${title} - Tamanho: ${size}</div>
             <input type="number" value="${quantity}" class="cart-quantity">
-            <span class="cart-remove"><i class='bx bx-trash'></i></span> <!-- Ícone de lixeira -->
+            <span class="cart-remove"><i class='bx bx-trash'></i></span>
         </div>
     `;
     cartShopBox.innerHTML = cartBoxContent;
     document.getElementsByClassName('cart-content')[0].append(cartShopBox);
     cartShopBox.getElementsByClassName('cart-remove')[0].addEventListener('click', removeCartItem);
+
+    // Atualiza o contador de produtos
+    updateCartCount();
 }
 
-// Seleciona os elementos do modal
+// Finalizar pedido
+document.querySelector('.btn-buy').onclick = () => {
+    let cartItems = document.getElementsByClassName('cart-box');
+    
+    // Verifica se o carrinho está vazio
+    if (cartItems.length === 0) {
+        alert("Não é possível finalizar o pedido sem produtos no carrinho.");
+        return; // Impede a execução do código abaixo
+    }
+    
+    // Se o carrinho não estiver vazio, abre o modal de finalização
+    finalizationModal.style.display = "block";
+};
+
+// Fecha o modal de finalização
 let finalizationModal = document.getElementById("finalization-modal");
 let closeFinalizationModal = document.getElementById("close-finalization-modal");
 let confirmOrderButton = document.getElementById("confirm-order");
@@ -196,5 +205,53 @@ function sendEmail(name, phone, delivery, address) {
     window.location.href = emailUrl;
 
     // Limpa o carrinho após o envio
-    document.getElementsByClassName('cart-content')[0].innerHTML = ''; // Limpa o conteúdo do carrinho
+    document.getElementsByClassName('cart-content')[0].innerHTML = ''; 
+    updateCartCount(); // Atualiza o contador após limpar o carrinho
 }
+
+// Remover itens
+if (document.readyState == "loading") {
+    document.addEventListener("DOMContentLoaded", ready);   
+} else {
+    ready();
+}
+
+function ready() {
+    var removeCartButtons = document.getElementsByClassName('cart-remove');
+    for (var i = 0; i < removeCartButtons.length; i++) {
+        var button = removeCartButtons[i];
+        button.addEventListener('click', removeCartItem);
+    }
+
+    // Mudança Quantidade
+    var quantityInputs = document.getElementsByClassName('cart-quantity');
+    for (var i = 0; i < quantityInputs.length; i++) {
+        var input = quantityInputs[i];
+        input.addEventListener('change', quantityChanged);
+    }
+}
+
+function removeCartItem(event) {
+    var buttonClicked = event.target;
+    // Remove o elemento pai que contém o item do carrinho
+    buttonClicked.closest('.cart-box').remove(); 
+    updateCartCount(); // Atualiza o contador após remover o item
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const images = document.querySelectorAll(".carousel-item");
+    let currentIndex = 0;
+
+    document.getElementById("next").addEventListener("click", () => {
+        images[currentIndex].classList.remove("active");
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add("active");
+    });
+
+    document.getElementById("prev").addEventListener("click", () => {
+        images[currentIndex].classList.remove("active");
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        images[currentIndex].classList.add("active");
+    });
+});
+
