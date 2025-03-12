@@ -251,7 +251,7 @@ if (isLoggedIn) {
 } else {
     document.getElementById('user-status').innerText = "Você não está logado.";
     document.getElementById('login-button').onclick = function() {
-        window.location.href = 'pagina-de-login.html'; // Redireciona para a página de login
+        window.location.href = 'entrada/index.html?#'; // Redireciona para a página de login
     };
 }
 

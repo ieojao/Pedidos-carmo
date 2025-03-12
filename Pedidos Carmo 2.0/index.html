@@ -20,7 +20,6 @@
                 <div class="dropdown-content" id="dropdown-content">
                     <p id="user-status">Você está logado como <strong>Usuário</strong>.</p>
                     <button id="logout-button" class="btn">Logout</button>
-                    <button id="login-button" class="btn">Login</button>
                 </div>
             </div>
             <div class="cart">
@@ -38,8 +37,7 @@
             <span class="close" id="close-modal">&times;</span>
             <h2>Bem-vindo!</h2>
             <p id="user-status">Você está logado como <strong>Usuário</strong>.</p>
-            <button id="logout-button" class="btn">Logout</button>
-            <button id="login-button" class="btn">Login</button>
+            <button id="logout-button-modal" class="btn" onclick="redirectToPage()">Logout</button>
         </div>
     </div>
     
@@ -69,91 +67,90 @@
     <section class="shop container" id="menu">
         <h2 class="section-title">Menu dos Itens</h2>
         <div class="shop-content">
-            <!--Produto 1-->
+            <!-- Produto 1 -->
             <div class="product-box" data-sizes='["Tamanho único"]'>
                 <img src="imagens/Roupas/apito.png" alt="" class="product-img">
                 <h2 class="product-title">APITO</h2>
                 <i class='bx bx-cart add-cart'></i>
             </div>
-            <!--Produto 2-->
+            <!-- Produto 2 -->
             <div class="product-box" data-sizes='["40", "42", "44", "48", "50", "52", "54", "58", "60", "62", "64", "68", "Outros"]'>
                 <img src="imagens/Roupas/cinto.png" alt="" class="product-img">
                 <h2 class="product-title">CINTO</h2>
                 <i class='bx bx-cart add-cart'></i>
             </div>
-            <!--Produto 3-->
+            <!-- Produto 3 -->
             <div class="product-box" data-sizes='["Tamanho único"]'>
                 <img src="imagens/Roupas/coldre.png" alt="" class="product-img">
                 <h2 class="product-title">COLDRE</h2>
                 <i class='bx bx-cart add-cart'></i>
             </div>
-            <!--Produto 4-->
+            <!-- Produto 4 -->
             <div class="product-box" data-sizes='["Tamanho único"]'>
                 <img src="imagens/Roupas/cordao fiel.png" alt="" class="product-img">
                 <h2 class="product-title">CORDÃO FIEL</h2>
                 <i class='bx bx-cart add-cart'></i>
             </div>
-            <!--Produto 5-->
+            <!-- Produto 5 -->
             <div class="product-box" data-sizes='["40", "42", "44", "48", "50", "52", "54", "58", "60", "62", "64", "68", "Outros"]'>
                 <img src="imagens/Roupas/colete refletivo.png" alt="" class="product-img">
                 <h2 class="product-title">COLETE REFLETIVO</h2>
                 <i class='bx bx-cart add-cart'></i>
             </div>
-            <!--Produto 6-->
+            <!-- Produto 6 -->
             <div class="product-box" data-sizes='["P", "M", "G", "GG", "EXG"]'>
                 <img src="imagens/Roupas/colete.png" alt="" class="product-img">
                 <h2 class="product-title">CAPA COLETE BALISTICO</h2>
                 <i class='bx bx-cart add-cart'></i>
             </div>
-            <!--Produto 7-->
+            <!-- Produto 7 -->
             <div class="product-box" data-sizes='["Tamanho único"]'>
                 <img src="imagens/Roupas/chapeu.png" alt="" class="product-img">
                 <h2 class="product-title">CHAPEU</h2>
                 <i class='bx bx-cart add-cart'></i>
             </div>
-            <!--Produto 8-->
+            <!-- Produto 8 -->
             <div class="product-box" data-sizes='["M"]'>
                 <img src="imagens/Roupas/cortuno.png" alt="" class="product-img">
                 <h2 class="product-title">CORTUNO</h2>
                 <i class='bx bx-cart add-cart'></i>
             </div>
-            <!--Produto 9-->
+            <!-- Produto 9 -->
             <div class="product-box" data-sizes='["01", "02", "03", "04", "60", "07", "08", "09", "Outros"]'>
                 <img src="imagens/Roupas/camisa azul longa.png" alt="" class="product-img">
                 <h2 class="product-title">CAMISA AZUL LONGA</h2>
                 <i class='bx bx-cart add-cart'></i>
             </div>
-            <!--Produto 10-->
+            <!-- Produto 10 -->
             <div class="product-box" data-sizes='["01", "02", "03", "04", "60", "07", "08", "09", "Outros"]'>
                 <img src="imagens/Roupas/azul curta.png" alt="" class="product-img">
                 <h2 class="product-title">CAMISA AZUL CURTA</h2>
                 <i class='bx bx-cart add-cart'></i>
             </div>
-            <!--Produto 14-->
+            <!-- Produto 14 -->
             <div class="product-box" data-sizes='["38", "40", "42", "44", "48", "50", "52", "54", "58", "60", "62", "64", "68", "Outros"]'>
                 <img src="imagens/Roupas/jaqueta.png" alt="" class="product-img">
                 <h2 class="product-title">Jaqueta</h2>
                 <i class='bx bx-cart add-cart'></i>
             </div>
-            <!--Produto 11-->
+            <!-- Produto 11 -->
             <div class="product-box" data-sizes='["01", "02", "03", "04", "60", "07", "08", "09", "Outros"]'>
                 <img src="imagens/Roupas/camisa branca longa.jpg" alt="" class="product-img">
                 <h2 class="product-title">CAMISA BRANCA LONGA</h2>
                 <i class='bx bx-cart add-cart'></i>
             </div>
-            <!--Produto 12-->
+            <!-- Produto 12 -->
             <div class="product-box" data-sizes='["01", "02", "03", "04", "60", "07", "08", "09", "Outros"]'>
                 <img src="imagens/Roupas/camisa branca curta.png" alt="" class="product-img">
                 <h2 class="product-title">CAMISA BRANCA CURTA</h2>
                 <i class='bx bx-cart add-cart'></i>
             </div>
-            <!--Produto 13-->
+            <!-- Produto 13 -->
             <div class="product-box" data-sizes='["38", "40", "42", "44", "48", "50", "52", "54", "58", "60", "62", "64", "68", "Outros"]'>
                 <img src="imagens/Roupas/calça.png" alt="" class="product-img">
                 <h2 class="product-title">CALÇA</h2>
                 <i class='bx bx-cart add-cart'></i>
             </div>
-
         </div>
     </section>
     <!-- Modal de Finalização de Pedido -->
