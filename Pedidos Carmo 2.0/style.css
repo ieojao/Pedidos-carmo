@@ -18,6 +18,13 @@
     --bg-color: #fff;
     --poppins-font: "Poppins", sans-serif;
 }
+.cart-icon-container {
+    margin-right: 20px; /* Adiciona espaço entre o carrinho e o botão do menu */
+}
+
+.menu-container {
+    margin-left: 20px; /* Adiciona espaço entre o menu e o carrinho */
+}
 
 img {
     width: 100%;
@@ -190,15 +197,25 @@ header {
 }
 
 /* Conteúdo Menu */
-.shop-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, auto));
-    gap: 1.5rem;
-}
-
 .product-box {
     position: relative;
+    height: 300px; /* Altura fixa */
 }
+
+.product-img {
+    width: 100%;  /* Garante que todas tenham a mesma largura */
+    height: 200px; /* Define uma altura fixa */
+    object-fit: contain; /* Mantém a imagem inteira sem cortes */
+}
+
+.shop-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    align-items: stretch; /* Todos os itens terão a mesma altura */
+}
+
+
 
 .product-box:hover {
     padding: 10px;
@@ -206,11 +223,6 @@ header {
     transition: 0.4s;
 }
 
-.product-img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 0.5rem;
-}
 
 .product-title {
     font-size: 1.1rem;
@@ -673,4 +685,21 @@ header {
     margin-right: auto; /* Mantém o logo à esquerda */
 }
 
-/* O restante do seu CSS permanece o mesmo */
+footer {
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer-content h3 {
+    margin-bottom: 10px;
+  }
+  
+  .footer-bottom {
+    font-size: 0.8rem;
+  }
+  
